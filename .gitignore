@@ -1,0 +1,30 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# VSCode
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# Reports & Cache
+app/reports/*
+*.log
+
+# Streamlit auto cache
+.streamlit/
+
+# PDF build temp
+*.pdf
+*.html
+
