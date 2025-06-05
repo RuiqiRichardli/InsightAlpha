@@ -14,19 +14,21 @@ plot_macd(df)
 
 
 
-# main.py
 
-from app.data.financial_data import get_financial_metrics, calculate_value_score
+
+from app.data.macro_data import get_macro_data
 
 def main():
-    ticker = "TSLA"
-    df = get_financial_metrics(ticker)
-    print("原始财务数据：")
-    print(df.head())
+    # 第四章 · 宏观经济数据示例
+    df_rate = get_macro_data("DGS10")       # 10年期国债收益率
+    df_unemp = get_macro_data("UNRATE")     # 失业率
+    df_cpi = get_macro_data("CPIAUCSL")     # CPI
+    df_vix = get_macro_data("VIXCLS")       # VIX 波动率指数
 
-    scored_df = calculate_value_score(df)
-    print("\n📊 Value Score 结果：")
-    print(scored_df[["value_score"]])
+    # 合并展示
+    df_macro = df_rate.join([df_unemp, df_cpi, df_vix], how="outer")
+    print("📈 宏观经济数据：")
+    print(df_macro.tail())
 
 if __name__ == "__main__":
     main()
